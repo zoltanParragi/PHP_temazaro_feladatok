@@ -1,0 +1,103 @@
+body {
+    padding: 20px 0 50px 0;    
+}
+h1 {
+    text-align: center;
+}
+table{
+    width: 80%;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+    box-shadow: 10px 10px 5px #aaaaaa;
+}
+th, td {
+    width: 25%;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+th {
+    background: rgb(233, 232, 232);
+}
+
+table tbody tr:hover {
+    background-color:#828fa8;
+    color:#ffffff;
+    text-shadow: 1px 2px #000000;
+    box-shadow: 0px 0px 5px #ff0000;
+}
+
+.btns{
+    display: flex;
+    justify-content: space-between;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btns>a{
+    width: 40%;
+}
+
+button{
+    padding: 5px 0;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.btns>a:first-child>button{
+    background: rgb(119, 177, 119);
+    border: 1px solid rgb(22, 41, 22);
+}
+
+.btns>a:last-child>button{
+    background: rgb(231, 144, 144);
+    border: 1px solid rgb(54, 13, 13);
+}
+
+.btns a>button:hover{
+    background: rgb(233, 232, 232);
+}
+
+/* for useredit.php */
+
+
+.errormsg, .successmsg{
+    border-radius: 5px;
+    margin: 10px auto;
+    padding: 10px;
+    width: 20%;
+}
+.errormsg{
+    background: rgba(255, 0, 0, 0.6);
+    color: #fff;
+}
+
+form{
+    width: 20%;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.successmsg{
+    background: rgb(91, 165, 91);
+    color: #fff;
+}
+
+form>button{
+    width: 30%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(120, 120, 247);
+}
+
+.formWrapper>div, #noUserSelected {
+    text-align: center;
+}
+
+
