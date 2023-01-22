@@ -4,7 +4,7 @@
     error_reporting(~E_ALL);
 
     
-    if($_SERVER["REQUEST_METHOD"] !== 'POST' and !isset($_GET['userId_to_del'])) {
+    if($_SERVER["REQUEST_METHOD"] !== 'POST' and !isset($_GET['userId_to_del']) and !isset($_GET['user_to_del']) and !isset($_GET['cancel_del'])) {
         http_response_code(403);
         exit;
     }
@@ -14,15 +14,29 @@
         exit($err);
     }
 
-    if(isset($_GET['userId_to_del'])) {        
-        mysqli_query($connection, "delete from users2 where id='".$_GET['userId_to_del']."' limit 1");
     
+    if(isset($_GET['cancel_del'])) {
+        unset($_SESSION["userId_to_del"]);
+        unset($_GET['user_to_del']);
+        header("location: ". $_SERVER["HTTP_REFERER"]);
+        exit();
+    }
+
+    if(isset($_GET['userId_to_del'])) { 
+        $_SESSION["userId_to_del"] = $_GET['userId_to_del'];
+        header("location: ". $_SERVER["HTTP_REFERER"]);
+        exit();
+    }
+
+    
+    if(isset($_GET['user_to_del'])) {        
+        mysqli_query($connection, "delete from users2 where id='".$_GET['user_to_del']."' limit 1");
         if($err = mysqli_error($connection)){
             exit($err);
         }
-    
         $_SESSION["flash"]["msg"] = ['value' => ['Sikeres törlés'], 'type' => 'successmsg'];
-
+        unset($_SESSION["userId_to_del"]);
+        unset($_GET['user_to_del']);
         header("location: ". $_SERVER["HTTP_REFERER"]);
         exit();
     }

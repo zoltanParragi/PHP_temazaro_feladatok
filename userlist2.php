@@ -8,8 +8,6 @@
         exit($err);
     }
     $users = mysqli_fetch_all(mysqli_query($connection, "select * from users2"));
-
-    unset($_GET['user_to_del']);
     
 ?>
 <!DOCTYPE html>
@@ -68,7 +66,6 @@
                             <a href="<?php print('http://localhost/full-stack-course/Feladatok/PHP_temazaro_feladatok/server.php?userId_to_del='.$user[0]) ?>">
                                 <button>Delete</button>
                             </a>
-                            
                         </div>
                     </td>
                 </tr>
@@ -77,24 +74,6 @@
             ?>
         </tbody>
     </table>
-    <div id="delPopup">
-        <h4>Do you really want to delete the user?</h4>
-        <a href="<?php print('http://localhost/full-stack-course/Feladatok/PHP_temazaro_feladatok/server.php?cancel_del=1') ?>">
-            <button>Cancel</button>
-        </a>
-        <a href="<?php print('http://localhost/full-stack-course/Feladatok/PHP_temazaro_feladatok/server.php?user_to_del='.$_SESSION[userId_to_del]) ?>">
-            <button>Delete</button>
-        </a>
-    </div>
-
-    <script>
-        let userIdToDel = "<?php print($_SESSION['userId_to_del'])?>";
-        if(userIdToDel) {
-            document.querySelector('#delPopup').style.visibility = "visible";
-        }
-        
-
-    </script>
 </body>
 </html>
 <?php unset($_SESSION["flash"]);?>
